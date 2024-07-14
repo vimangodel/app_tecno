@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "870760334946",
+    "project_id": "fir-tecnohouse",
+    "storage_bucket": "fir-tecnohouse.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:870760334946:android:420fe2b26ca1fd8280b33b",
+        "android_client_info": {
+          "package_name": "com.example.app_tecno"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYafMB_iEP_hlgnbS1lN1oDHUYQSidLOU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
