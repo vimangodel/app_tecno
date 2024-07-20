@@ -1,6 +1,5 @@
 import 'package:app_tecno/pantallas/home_screen.dart';
-import 'package:app_tecno/pantallas/register_screen.dart';
-import 'package:app_tecno/pantallas/inicio_sesion_screen.dart';
+import 'package:app_tecno/services/firebase_service.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -23,7 +22,43 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Gotham Pro Black',
       ),
       title: 'Material App',
-      home: const RegisterScreen(),
+      home: const HomeScreen(),
+    );
+  }
+}
+
+class Home extends StatefulWidget {
+  const Home({
+    super.key,
+  });
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Material App Bar'),
+      ),
+      body: FutureBuilder(
+          future: getUsuarios(),
+          builder: ((context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.builder(
+                itemCount: snapshot.data?.length,
+                itemBuilder: (context, index) {
+                  return Text(snapshot.data?[index]['nombre']);
+                },
+              );
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          })),
     );
   }
 }

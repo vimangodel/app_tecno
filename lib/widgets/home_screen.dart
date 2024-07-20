@@ -1,3 +1,5 @@
+import 'package:app_tecno/pantallas/inicio_sesion_screen.dart';
+import 'package:app_tecno/pantallas/register_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreenWidget extends StatefulWidget {
@@ -30,7 +32,12 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
           ),
           ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: _color1),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const IniSesionScreen()));
+              },
               child: const Text(
                 'INICIAR SESIÓN',
                 style: TextStyle(
@@ -40,7 +47,12 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
               )),
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: _color1),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const RegisterScreen()));
+            },
             child: const Text('REGISTRARME',
                 style: TextStyle(
                     color: Colors.white,

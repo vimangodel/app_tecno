@@ -6,18 +6,20 @@ class IniSesionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-            backgroundColor: const MaterialColor(0xFF002F79, <int, Color>{}),
-            title: const Center(
-              child: Text('INICIAR SESIÓN',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontWeight: FontWeight.w900,
-                      color: Colors.white,
-                      fontFamily: 'Gotham Pro')),
-            )),
-        body: const FormIniSesion(),
-        backgroundColor: const MaterialColor(0xFF002F79, <int, Color>{}));
+    return const Scaffold(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("INICIO DE SESIÓN",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontWeight: FontWeight.w900,
+                    fontSize: 28,
+                    color: Colors.white,
+                    fontFamily: 'Gotham Pro')),
+            FormIniSesion()
+          ],
+        ),
+        backgroundColor: MaterialColor(0xFF002F79, <int, Color>{}));
   }
 }
