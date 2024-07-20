@@ -1,23 +1,40 @@
+import 'package:app_tecno/sistema/globales.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:app_tecno/widgets/admin.dart';
 
-class MainWidget extends StatefulWidget {
-  const MainWidget({super.key});
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
 
   @override
-  State<MainWidget> createState() => _MainWidgetState();
+  State<MainScreen> createState() => _MainScreenState();
 }
 
-class _MainWidgetState extends State<MainWidget> {
-  Color _azul = Color.fromARGB(255, 0, 60, 121);
-  Color _naranja = Color.fromARGB(255, 255, 149, 0);
-  int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text('Index 0: Contactos'),
-    Text('Index 1: Carrito'),
-    Text('Index 2: Compras'),
-    Text('Index 3: Opciones'),
-    Text('Index 4: Información'),
+class _MainScreenState extends State<MainScreen> {
+  late FirebaseFirestore db;
+  late Color _azul;
+  late Color _naranja;
+  static late Color _celeste;
+  late int _selectedIndex = 0;
+  static final List<Widget> _widgetOptions = <Widget>[
+    Text('Contactos'),
+    Text('Carrito'),
+    Text('Categorías'),
+    rol == 1
+        ? const Admin()
+        : rol == 2
+            ? Center(
+                child: Text(
+                    "USTED NO TIENE ACCESO A LAS OPCIONES DE ADMINISTRADOR",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: _celeste,
+                        fontWeight: FontWeight.w900,
+                        fontSize: 28,
+                        fontFamily: 'Gotham Pro')))
+            : const SizedBox(),
+    Text('Información'),
   ];
 
   void _onItemTapped(int index) {
@@ -27,9 +44,21 @@ class _MainWidgetState extends State<MainWidget> {
   }
 
   @override
+  void initState() {
+    _selectedIndex = 0;
+    _azul = const Color.fromARGB(255, 0, 60, 121);
+    _naranja = const Color.fromARGB(255, 255, 149, 0);
+    _celeste = const Color.fromARGB(255, 0, 176, 242);
+    db = FirebaseFirestore.instance;
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: Center(
             child: _selectedIndex == 0
                 ? const Text('CONTACTOS',

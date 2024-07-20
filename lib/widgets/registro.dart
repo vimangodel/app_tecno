@@ -45,7 +45,8 @@ class _FormularioRegistroState extends State<FormRegistro> {
         'telefono': telefono,
         'direccion': direccion,
         'contra': contra,
-        'fecha_registro': fecha
+        'fecha_registro': fecha,
+        'rol': 2
       });
     }
   }

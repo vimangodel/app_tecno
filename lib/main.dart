@@ -1,5 +1,7 @@
 import 'package:app_tecno/pantallas/home_screen.dart';
+import 'package:app_tecno/pantallas/main_screen.dart';
 import 'package:app_tecno/services/firebase_service.dart';
+import 'package:app_tecno/widgets/admin.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Gotham Pro Black',
       ),
       title: 'Material App',
-      home: const HomeScreen(),
+      home: const MainScreen(),
     );
   }
 }
