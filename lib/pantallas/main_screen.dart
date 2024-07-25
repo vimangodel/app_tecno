@@ -45,7 +45,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   void initState() {
-    _selectedIndex = 0;
+    _selectedIndex = 2;
     _azul = const Color.fromARGB(255, 0, 60, 121);
     _naranja = const Color.fromARGB(255, 255, 149, 0);
     _celeste = const Color.fromARGB(255, 0, 176, 242);

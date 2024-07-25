@@ -1,3 +1,4 @@
+import 'package:app_tecno/widgets/form_clientes.dart';
 import 'package:flutter/material.dart';
 
 class Admin extends StatefulWidget {
@@ -8,12 +9,16 @@ class Admin extends StatefulWidget {
 }
 
 class _AdminState extends State<Admin> {
-  late final GlobalKey<FormState> _formularioEstado;
+  static final List<Widget> _formOpciones = <Widget>[
+    const FormClientes(),
+    const Text('Productos')
+  ];
+  late int _selectedIndex;
   late Color _naranja;
 
   @override
   void initState() {
-    _formularioEstado = GlobalKey<FormState>();
+    _selectedIndex = 0;
     _naranja = const Color.fromARGB(255, 255, 149, 0);
     super.initState();
   }
@@ -31,7 +36,11 @@ class _AdminState extends State<Admin> {
             style: ElevatedButton.styleFrom(
               backgroundColor: _naranja,
             ),
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                _selectedIndex = 0;
+              });
+            },
             label: const Text("Clientes",
                 style: TextStyle(
                     color: Colors.white,
@@ -44,7 +53,11 @@ class _AdminState extends State<Admin> {
             style: ElevatedButton.styleFrom(
               backgroundColor: _naranja,
             ),
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                _selectedIndex = 1;
+              });
+            },
             label: const Text("Productos",
                 style: TextStyle(
                     color: Colors.white,
@@ -55,11 +68,12 @@ class _AdminState extends State<Admin> {
           ),
         ],
       ),
-      Form(
-          key: _formularioEstado,
-          child: Column(
-            children: [Row(children: [])],
-          ))
+      const SizedBox(
+        height: 20,
+      ),
+      Container(
+        child: _formOpciones.elementAt(_selectedIndex),
+      ),
     ]);
   }
 }
