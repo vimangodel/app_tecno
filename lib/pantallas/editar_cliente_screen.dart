@@ -11,9 +11,9 @@ class EditarClienteScreen extends StatefulWidget {
 class _EditarClienteScreenState extends State<EditarClienteScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Colors.white,
-      body: const Center(child: EditarCliente()),
+      body: Center(child: EditarCliente()),
     );
   }
 }

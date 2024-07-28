@@ -1,6 +1,5 @@
 import 'package:app_tecno/pantallas/cliente_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:app_tecno/sistema/globales.dart';
 
 import 'package:flutter/material.dart';
@@ -29,7 +28,7 @@ class _FormClientesState extends State<FormClientes> {
 
     QuerySnapshot queryUsuarios = await collectionReferencePeople.get();
 
-    queryUsuarios.docs.forEach((documento) {
+    for (var documento in queryUsuarios.docs) {
       final Map<String, dynamic> data =
           documento.data() as Map<String, dynamic>;
       final fechaRegistroDateTime = data['fecha_registro'].toDate();
@@ -52,7 +51,7 @@ class _FormClientesState extends State<FormClientes> {
           _fechaRegistro.end.isAfter(fechaRegistroDateTime))) {
         users.add(person);
       }
-    });
+    }
     return users;
   }
 
@@ -234,9 +233,7 @@ class _FormClientesState extends State<FormClientes> {
     );
     if (seleccion != null) {
       setState(() {
-        _fechaController.text = seleccion.start.toString().split(" ")[0] +
-            " / " +
-            seleccion.end.toString().split(" ")[0];
+        _fechaController.text = "${seleccion.start.toString().split(" ")[0]} / ${seleccion.end.toString().split(" ")[0]}";
         _fechaRegistro = seleccion;
       });
     }

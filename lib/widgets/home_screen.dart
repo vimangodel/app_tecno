@@ -1,5 +1,6 @@
 import 'package:app_tecno/pantallas/inicio_sesion_screen.dart';
 import 'package:app_tecno/pantallas/register_screen.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreenWidget extends StatefulWidget {
@@ -10,7 +11,17 @@ class HomeScreenWidget extends StatefulWidget {
 }
 
 class _HomeScreenWidgetState extends State<HomeScreenWidget> {
+  FirebaseStorage storage = FirebaseStorage.instance;
   late Color _color1;
+  String _url = '';
+
+  Future<void> getLogo() async {
+    final ref = storage.ref().child('logo.png');
+    final downladUrl = await ref.getDownloadURL();
+    setState(() {
+      _url = downladUrl;
+    });
+  }
 
   @override
   void initState() {
@@ -20,6 +31,9 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      getLogo();
+    });
     return Center(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -28,7 +42,9 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
           Container(
             height: 200,
             margin: const EdgeInsets.only(bottom: 30),
-            child: Image.asset('assets/img/logo.png'),
+            child: _url == ''
+                ? const CircularProgressIndicator()
+                : Image.network(_url),
           ),
           ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: _color1),

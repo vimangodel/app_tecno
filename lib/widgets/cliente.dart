@@ -20,9 +20,9 @@ class _ClienteState extends State<Cliente> {
 
     QuerySnapshot queryUsuarios = await usuarios.get();
 
-    queryUsuarios.docs.forEach((documento) {
+    for (var documento in queryUsuarios.docs) {
       usuarios.doc(id).delete();
-    });
+    }
   }
 
   @override
@@ -41,61 +41,111 @@ class _ClienteState extends State<Cliente> {
               children: [
                 Column(
                   children: [
-                    Row(
-                      children: [
-                        Icon(Icons.person, size: 150, color: _azul),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text("Nombre: $editNombre",
-                                style: TextStyle(
-                                    color: _azul,
-                                    fontSize: 13,
-                                    fontFamily: 'Gotham Pro')),
-                            Text("Apellido: $editApellidos",
-                                style: TextStyle(
-                                    color: _azul,
-                                    fontSize: 13,
-                                    fontFamily: 'Gotham Pro')),
-                            Text("Usuario: $editUsuario",
-                                style: TextStyle(
-                                    color: _azul,
-                                    fontSize: 13,
-                                    fontFamily: 'Gotham Pro')),
-                            Text("Correo: $editEmail",
-                                style: TextStyle(
-                                    color: _azul,
-                                    fontSize: 13,
-                                    fontFamily: 'Gotham Pro')),
-                            Text("Telefono: $editTelefono",
-                                style: TextStyle(
-                                    color: _azul,
-                                    fontSize: 13,
-                                    fontFamily: 'Gotham Pro')),
-                            Text("Dirección: $editDireccion",
-                                style: TextStyle(
-                                    color: _azul,
-                                    fontSize: 13,
-                                    fontFamily: 'Gotham Pro')),
-                            Text("Contraseña: $editContra",
-                                style: TextStyle(
-                                    color: _azul,
-                                    fontSize: 13,
-                                    fontFamily: 'Gotham Pro')),
-                            editRol == 1
-                                ? Text("Rol: Administrador",
-                                    style: TextStyle(
-                                        color: _azul,
-                                        fontSize: 13,
-                                        fontFamily: 'Gotham Pro'))
-                                : Text("Rol: Cliente",
-                                    style: TextStyle(
-                                        color: _azul,
-                                        fontSize: 13,
-                                        fontFamily: 'Gotham Pro')),
-                          ],
-                        )
-                      ],
+                    Icon(Icons.person, size: 150, color: _azul),
+                    ListTile(
+                      title: Text("Nombre:",
+                          style: TextStyle(
+                              color: _azul,
+                              fontSize: 20,
+                              fontFamily: 'Gotham Medium',
+                              fontWeight: FontWeight.w900)),
+                      subtitle: Text(editNombre,
+                          style: TextStyle(
+                              color: _azul,
+                              fontSize: 15,
+                              fontFamily: 'Gotham Medium',
+                              fontWeight: FontWeight.w600)),
+                    ),
+                    ListTile(
+                      title: Text("Apellidos:",
+                          style: TextStyle(
+                              color: _azul,
+                              fontSize: 20,
+                              fontFamily: 'Gotham Medium',
+                              fontWeight: FontWeight.w900)),
+                      subtitle: Text(editApellidos,
+                          style: TextStyle(
+                              color: _azul,
+                              fontSize: 15,
+                              fontFamily: 'Gotham Medium',
+                              fontWeight: FontWeight.w600)),
+                    ),
+                    ListTile(
+                      title: Text("Email:",
+                          style: TextStyle(
+                              color: _azul,
+                              fontSize: 20,
+                              fontFamily: 'Gotham Medium',
+                              fontWeight: FontWeight.w900)),
+                      subtitle: Text(editEmail,
+                          style: TextStyle(
+                              color: _azul,
+                              fontSize: 15,
+                              fontFamily: 'Gotham Medium',
+                              fontWeight: FontWeight.w600)),
+                    ),
+                    ListTile(
+                      title: Text("Teléfono:",
+                          style: TextStyle(
+                              color: _azul,
+                              fontSize: 20,
+                              fontFamily: 'Gotham Medium',
+                              fontWeight: FontWeight.w900)),
+                      subtitle: Text(editTelefono,
+                          style: TextStyle(
+                              color: _azul,
+                              fontSize: 15,
+                              fontFamily: 'Gotham Medium',
+                              fontWeight: FontWeight.w600)),
+                    ),
+                    ListTile(
+                      title: Text("Dirección:",
+                          style: TextStyle(
+                              color: _azul,
+                              fontSize: 20,
+                              fontFamily: 'Gotham Medium',
+                              fontWeight: FontWeight.w900)),
+                      subtitle: Text(editDireccion,
+                          style: TextStyle(
+                              color: _azul,
+                              fontSize: 15,
+                              fontFamily: 'Gotham Medium',
+                              fontWeight: FontWeight.w600)),
+                    ),
+                    ListTile(
+                      title: Text("Contraseña:",
+                          style: TextStyle(
+                              color: _azul,
+                              fontSize: 20,
+                              fontFamily: 'Gotham Medium',
+                              fontWeight: FontWeight.w900)),
+                      subtitle: Text(editContra,
+                          style: TextStyle(
+                              color: _azul,
+                              fontSize: 15,
+                              fontFamily: 'Gotham Medium',
+                              fontWeight: FontWeight.w600)),
+                    ),
+                    ListTile(
+                      title: Text("Rol:",
+                          style: TextStyle(
+                              color: _azul,
+                              fontSize: 20,
+                              fontFamily: 'Gotham Medium',
+                              fontWeight: FontWeight.w900)),
+                      subtitle: editRol == 1
+                          ? Text("Administrador",
+                              style: TextStyle(
+                                  color: _azul,
+                                  fontSize: 15,
+                                  fontFamily: 'Gotham Medium',
+                                  fontWeight: FontWeight.w600))
+                          : Text("Cliente",
+                              style: TextStyle(
+                                  color: _azul,
+                                  fontSize: 15,
+                                  fontFamily: 'Gotham Medium',
+                                  fontWeight: FontWeight.w600)),
                     ),
                     Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,

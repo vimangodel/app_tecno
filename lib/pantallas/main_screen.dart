@@ -1,6 +1,9 @@
 import 'package:app_tecno/sistema/globales.dart';
+import 'package:app_tecno/widgets/carrito.dart';
+import 'package:app_tecno/widgets/categorias.dart';
+import 'package:app_tecno/widgets/contactos.dart';
+import 'package:app_tecno/widgets/informacion.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:app_tecno/widgets/admin.dart';
 
@@ -18,9 +21,9 @@ class _MainScreenState extends State<MainScreen> {
   static late Color _celeste;
   late int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
-    Text('Contactos'),
-    Text('Carrito'),
-    Text('Categorías'),
+    const Contactos(),
+    const Carrito(),
+    const Categorias(),
     rol == 1
         ? const Admin()
         : rol == 2
@@ -34,7 +37,7 @@ class _MainScreenState extends State<MainScreen> {
                         fontSize: 28,
                         fontFamily: 'Gotham Pro')))
             : const SizedBox(),
-    Text('Información'),
+    const Informacion(),
   ];
 
   void _onItemTapped(int index) {

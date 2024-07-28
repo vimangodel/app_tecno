@@ -1,4 +1,5 @@
 import 'package:app_tecno/widgets/form_clientes.dart';
+import 'package:app_tecno/widgets/form_productos.dart';
 import 'package:flutter/material.dart';
 
 class Admin extends StatefulWidget {
@@ -11,7 +12,7 @@ class Admin extends StatefulWidget {
 class _AdminState extends State<Admin> {
   static final List<Widget> _formOpciones = <Widget>[
     const FormClientes(),
-    const Text('Productos')
+    const FormProductos(),
   ];
   late int _selectedIndex;
   late Color _naranja;

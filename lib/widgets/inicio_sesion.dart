@@ -1,7 +1,6 @@
 import 'package:app_tecno/pantallas/main_screen.dart';
 import 'package:app_tecno/pantallas/register_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:app_tecno/sistema/globales.dart';
 import 'package:flutter/material.dart';
 
@@ -28,13 +27,13 @@ class _FormIniSesionState extends State<FormIniSesion> {
 
     QuerySnapshot queryUsuarios = await collectionReferencePeople.get();
 
-    queryUsuarios.docs.forEach((documento) {
+    for (var documento in queryUsuarios.docs) {
       if (documento['usuario'] == _usuarioController.text) {
         usuario = documento['usuario'];
         contra = documento['contra'];
         rol = documento['rol'];
       }
-    });
+    }
 
     _user = usuario;
     _pass = contra;
